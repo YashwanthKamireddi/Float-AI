@@ -5,10 +5,10 @@ netCDF4
 SQLAlchemy
 psycopg2-binary
 
-# AI Squad Libraries (pinned for compatibility)
-langchain-core==0.2.10
-langchain==0.2.10
-langchain-community==0.2.9
+# AI Squad Libraries (pinned for compatibility with pydantic_v1 shims)
+langchain-core==0.2.11
+langchain==0.2.11
+langchain-community==0.2.10
 langchain-huggingface==0.0.3
 langchain-google-genai==1.0.6
 sentence-transformers
