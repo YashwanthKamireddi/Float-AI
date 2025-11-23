@@ -70,6 +70,7 @@ The backend now exposes a small REST surface for operational telemetry in additi
 - `GET /api/floats/{id}/profiles/{variable}` – most recent profile curve for the given float (`temperature`, `salinity`, or `pressure`).
 - `GET /api/floats/{id}/timeseries` – rolling time series (default: temperature) for charts and anomaly detection.
 - `GET /api/floats/{id}/quality` – simple completeness scores powering the QA panels.
+- `GET /api/health` – readiness + configuration probe (DB connectivity, FAISS path, Google API key present).
 
 These routes back the map widgets and data panels in the FloatAI dashboard and degrade gracefully to sample data if the database is unreachable.
 
@@ -104,3 +105,4 @@ The Vite dev server defaults to `http://localhost:5173`. The build step `npm run
 - Store secrets in your platform's secret manager—never bake them into container images.
 - Set `VITE_API_URL` in the frontend environment to the deployed backend URL (e.g., `https://api.yourdomain.com/api/ask`).
 - Adjust `RAG_RETRIEVER_K` to trade off recall vs. performance when scaling.
+- Containerize the backend with the provided `Dockerfile`, or deploy to Render using `render.yaml` (set GOOGLE_API_KEY and DB env vars in the host dashboard).
