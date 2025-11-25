@@ -6,6 +6,8 @@ from __future__ import annotations
 import logging
 import os
 import re
+import sys
+import types
 from datetime import date, datetime
 from decimal import Decimal
 from pathlib import Path
@@ -14,6 +16,19 @@ from typing import Any, Dict, List, Optional, Sequence, cast
 import certifi
 
 from dotenv import load_dotenv
+
+# --- Compatibility shim -----------------------------------------------------
+# Some deployment environments pin pydantic v2 and miss the langchain_core.pydantic_v1 module.
+try:
+    import langchain_core.pydantic_v1 as _pydantic_v1  # type: ignore
+except ModuleNotFoundError:  # pragma: no cover - defensive shim
+    try:
+        from pydantic.v1 import BaseModel, Field, root_validator, validator  # type: ignore
+    except ImportError:  # pragma: no cover - defensive shim
+        from pydantic import BaseModel, Field, root_validator, validator  # type: ignore
+    shim = types.SimpleNamespace(BaseModel=BaseModel, Field=Field, root_validator=root_validator, validator=validator)
+    sys.modules["langchain_core.pydantic_v1"] = shim  # type: ignore
+
 from langchain_community.utilities import SQLDatabase
 from langchain_community.vectorstores import FAISS
 from langchain_core.output_parsers import StrOutputParser
