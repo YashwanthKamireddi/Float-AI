@@ -7,7 +7,7 @@ psycopg2-binary
 
 # AI Squad Libraries (aligned versions)
 langchain==0.2.12
-langchain-core==0.2.23
+langchain-core==0.2.27
 langchain-community==0.2.12
 langchain-huggingface==0.0.3
 langchain-google-genai==1.0.6
