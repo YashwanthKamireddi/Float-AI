@@ -754,9 +754,9 @@ function App() {
           </section>
         </main>
 
-        <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 pointer-events-none">
+          <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 pointer-events-none">
           {showChatTray ? (
-            <div className="pointer-events-auto w-[480px] max-w-[95vw] max-h-[82vh] overflow-hidden rounded-3xl border border-white/10 bg-white/10 shadow-[0_18px_40px_-28px_rgba(15,23,42,0.6)] backdrop-blur-sm transition-all duration-200 ease-out dark:border-white/10 dark:bg-slate-900/40">
+            <div className="pointer-events-auto w-full max-w-[540px] max-h-[82vh] overflow-hidden rounded-3xl border border-white/10 bg-white/10 shadow-[0_18px_40px_-28px_rgba(15,23,42,0.6)] backdrop-blur-sm transition-all duration-200 ease-out dark:border-white/10 dark:bg-slate-900/40">
               <div className="relative flex h-[640px] max-h-[82vh] flex-col">
                 <button
                   type="button"
